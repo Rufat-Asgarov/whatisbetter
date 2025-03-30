@@ -1,0 +1,116 @@
+/* Общие стили */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+}
+
+/* Карточки опросов */
+.poll-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 30px;
+  padding: 20px;
+}
+
+.poll-card {
+  display: flex;
+  height: 350px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.poll-card:hover {
+  transform: translateY(-5px);
+}
+
+.poll-option {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 20px;
+  text-align: center;
+}
+
+.poll-option::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  z-index: 1;
+}
+
+.poll-option span {
+  position: relative;
+  z-index: 2;
+  color: white;
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.poll-option:hover {
+  flex: 1.2;
+}
+
+.poll-option:hover span {
+  margin-bottom: 30px;
+  font-size: 2rem;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .poll-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .poll-card {
+    height: 250px;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+/* Анимация загрузки */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.poll-card {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.poll-card:nth-child(1) { animation-delay: 0.1s; }
+.poll-card:nth-child(2) { animation-delay: 0.2s; }
+.poll-card:nth-child(3) { animation-delay: 0.3s; }
